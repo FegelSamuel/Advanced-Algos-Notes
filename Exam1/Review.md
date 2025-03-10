@@ -148,7 +148,7 @@ Since `n²` grows **strictly faster** than `n`, we write:
  log(n)
  #### Polynomial
  n, n^2, so on so forth
- #### Exponential (factorial falls under this ballpark)
+ #### Exponential 
  2^n
  
 ---
