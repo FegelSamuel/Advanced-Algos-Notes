@@ -38,8 +38,8 @@ Asymptotic notations describe the growth rate of functions, mainly used in algor
 Big-O notation represents the **upper bound** of a function's growth rate. It provides an upper limit on how an algorithm behaves in the worst case.  
 
 **Formal Definition:**  
-A function `f(n) = O(g(n))` if there exist positive constants `c` and `n0` such that:  
-`f(n) ≤ c * g(n)` for all `n ≥ n0`.  
+A function `f(n) = O(g(n))` if there exist positive constants `c` and `d` such that:  
+`f(n) ≤ c * g(n)` for all `n ≥ d`.  
 
 👉 **"At most" growth rate.**  
 
@@ -47,7 +47,7 @@ A function `f(n) = O(g(n))` if there exist positive constants `c` and `n0` such 
 Let `f(n) = 3n² + 5n + 7`.  
 Since `3n² + 5n + 7 ≤ 4n²` for large `n`, we can write:  
 `f(n) = O(n²)`.  
-Here, `g(n) = n²`, and we can choose `c = 4` and `n0 = 1`.
+Here, `g(n) = n²`, and we can choose `c = 4` and `d = 1`.
 
 ---
 
@@ -56,8 +56,8 @@ Here, `g(n) = n²`, and we can choose `c = 4` and `n0 = 1`.
 Big-Theta notation provides a **tight bound** on the growth rate of a function. It means that the function grows at the same rate, both upper and lower bounded by another function.  
 
 **Formal Definition:**  
-A function `f(n) = Θ(g(n))` if there exist positive constants `c1`, `c2`, and `n0` such that:  
-`c1 * g(n) ≤ f(n) ≤ c2 * g(n)` for all `n ≥ n0`.  
+A function `f(n) = Θ(g(n))` if there exist positive constants `c1`, `c2`, and `d` such that:  
+`c1 * g(n) ≤ f(n) ≤ c2 * g(n)` for all `n ≥ d`.  
 
 👉 **"Exact" growth rate.**  
 
@@ -74,8 +74,8 @@ Thus, `f(n) = Θ(n)`.
 Big-Omega notation provides a **lower bound** on a function's growth rate. It describes the best-case or at least how fast a function will grow.  
 
 **Formal Definition:**  
-A function `f(n) = Ω(g(n))` if there exist positive constants `c` and `n0` such that:  
-`f(n) ≥ c * g(n)` for all `n ≥ n0`.  
+A function `f(n) = Ω(g(n))` if there exist positive constants `c` and `d` such that:  
+`f(n) ≥ c * g(n)` for all `n ≥ d`.  
 
 👉 **"At least" growth rate.**  
 
@@ -83,7 +83,7 @@ A function `f(n) = Ω(g(n))` if there exist positive constants `c` and `n0` such
 Let `f(n) = 4n² + 10n + 6`.  
 Since `4n² + 10n + 6 ≥ n²` for large `n`, we can write:  
 `f(n) = Ω(n²)`.  
-Here, we can choose `c = 1` and `n0 = 1`.
+Here, we can choose `c = 1` and `d = 1`.
 
 ---
 
@@ -92,8 +92,8 @@ Here, we can choose `c = 1` and `n0 = 1`.
 Little-o notation represents a **strict upper bound**, meaning the function grows **strictly slower** than another function.  
 
 **Formal Definition:**  
-A function `f(n) = o(g(n))` if for all positive constants `c`, there exists `n0` such that:  
-`f(n) < c * g(n)` for all `n ≥ n0`.  
+A function `f(n) = o(g(n))` if for all positive constants `c`, there exists `d` such that:  
+`f(n) < c * g(n)` for all `n ≥ d`.  
 
 👉 **"Grows strictly slower than"** `g(n)`.  
 
@@ -110,8 +110,8 @@ This means that no matter how large we multiply `g(n)`, `f(n)` will always grow 
 Little-Omega notation represents a **strict lower bound**, meaning the function grows **strictly faster** than another function.  
 
 **Formal Definition:**  
-A function `f(n) = ω(g(n))` if for all positive constants `c`, there exists `n0` such that:  
-`f(n) > c * g(n)` for all `n ≥ n0`.  
+A function `f(n) = ω(g(n))` if for all positive constants `c`, there exists `d` such that:  
+`f(n) > c * g(n)` for all `n ≥ d`.  
 
 👉 **"Grows strictly faster than"** `g(n)`.  
 
