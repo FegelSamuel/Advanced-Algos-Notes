@@ -435,7 +435,9 @@ graph TD;
   u1 --> u2
 ```
 ### BFS
-
+queue lol
+### DFS
+gatekeeping this cuz i am dfs man
 
 
 
