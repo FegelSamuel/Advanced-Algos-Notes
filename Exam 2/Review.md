@@ -212,4 +212,11 @@ void longestCommonSubsequence(char *str1, char *str2) {
     printf("Longest Common Subsequence: %s\n", lcs);
 }
 ```
+* After filling dp[i][j], you backtrack:
+```bash
+If str1[i-1] == str2[j-1], it’s part of LCS — add to the sequence and move diagonally (i--, j--).
+Else move to the larger of dp[i-1][j] or dp[i][j-1].
+```
+**Important:**
 
+You collect characters backward (from the end to start), so at the end you must reverse the sequence.
