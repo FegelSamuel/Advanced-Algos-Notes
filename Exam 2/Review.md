@@ -236,5 +236,189 @@ and a value v[i],
 and a maximum weight capacity W for the knapsack,
 find the maximum total value you can carry without exceeding the weight W.
 ```
+#### C Implementation
+```C
+#include <stdio.h>
+
+// Function to solve 0-1 Knapsack
+int knapsack(int W, int wt[], int val[], int n) {
+    int dp[n+1][W+1];
+
+    // Build table dp[][] in bottom up manner
+    for (int i = 0; i <= n; i++) {
+        for (int w = 0; w <= W; w++) {
+            if (i == 0 || w == 0)
+                dp[i][w] = 0;
+            else if (wt[i-1] <= w)
+                dp[i][w] = (dp[i-1][w] > (val[i-1] + dp[i-1][w-wt[i-1]])) ? dp[i-1][w] : (val[i-1] + dp[i-1][w-wt[i-1]]);
+            else
+                dp[i][w] = dp[i-1][w];
+        }
+    }
+
+    return dp[n][W]; // Maximum value
+}
+
+int main() {
+    int val[] = {60, 100, 120};
+    int wt[] = {10, 20, 30};
+    int W = 50;
+    int n = sizeof(val)/sizeof(val[0]);
+
+    printf("Maximum value in Knapsack = %d\n", knapsack(W, wt, val, n));
+    return 0;
+}
+
+```
+max value here is 220.
+#### Table
+![table](https://github.com/user-attachments/assets/12fe0edd-5203-4386-ac88-8ccc9f492616)
+### Fractional Knapsack
+This one is way greedier
+# 📚 Problem Statement:
+
+> You are given `n` items with:
+> - a **weight** `w[i]`
+> - and a **value** `v[i]`
+>
+> and a **maximum weight capacity** `W` of your bag.
+> 
+> **Goal:**  
+> Select items to maximize the total value — but **you are allowed to take *fractions* of an item**.
+
+✅ **Fractional allowed** → you can "break" items:
+- Take **half** of an item
+- Take **one-third** of an item
+- etc.
+
+---
+
+# 🧠 Key idea:
+
+Since you can take fractions, **greedy strategy** gives the optimal answer.
+
+- **Pick items with the highest value-to-weight ratio first.**
+- If the bag cannot fit the full item, take as much as possible (i.e., a fraction).
+
+✅ **Greedy approach works perfectly here** (unlike 0-1 Knapsack, where greedy fails sometimes).
+
+---
+
+# 🔥 Step-by-Step Algorithm:
+
+1. For each item, calculate:
+   ```
+   value per weight = v[i] / w[i]
+   ```
+2. Sort all items by **value per weight** in **decreasing** order.
+3. Iterate through the items:
+   - If the entire item fits (`weight <= remaining_capacity`), take it fully.
+   - Otherwise, take the fraction that fits.
+
+---
+
+# 🛠️ Example:
+
+Suppose:
+
+| Item | Value | Weight | Value/Weight |
+|:----:|:-----:|:------:|:------------:|
+| 1    | 60    | 10     | 6            |
+| 2    | 100   | 20     | 5            |
+| 3    | 120   | 30     | 4            |
+
+Bag capacity `W = 50`.
+
+**Steps:**
+- Sort by value/weight: Item 1 → Item 2 → Item 3
+- Take Item 1 (weight 10) → remaining 40
+- Take Item 2 (weight 20) → remaining 20
+- Take **2/3** of Item 3 (because you only have room for 20 out of 30 weight).
+
+✅ Total value:
+- 60 + 100 + (120 × (20/30)) = 60 + 100 + 80 = **240**
+
+---
+
+# 🛠️ C Code for Fractional Knapsack:
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+// Structure to represent an item
+typedef struct {
+    int value, weight;
+} Item;
+
+// Function to compare items based on value/weight ratio
+int cmp(const void *a, const void *b) {
+    Item *item1 = (Item *)a;
+    Item *item2 = (Item *)b;
+    double r1 = (double)item1->value / item1->weight;
+    double r2 = (double)item2->value / item2->weight;
+    return (r1 < r2) ? 1 : -1; // Sort in decreasing order
+}
+
+double fractionalKnapsack(int W, Item arr[], int n) {
+    // Sort items by value/weight ratio
+    qsort(arr, n, sizeof(Item), cmp);
+
+    double totalValue = 0.0; // Total value in knapsack
+
+    for (int i = 0; i < n; i++) {
+        if (W >= arr[i].weight) {
+            W -= arr[i].weight;
+            totalValue += arr[i].value;
+        } else {
+            totalValue += arr[i].value * ((double)W / arr[i].weight);
+            break; // Bag is full
+        }
+    }
+
+    return totalValue;
+}
+
+int main() {
+    Item arr[] = {{60, 10}, {100, 20}, {120, 30}};
+    int W = 50;
+    int n = sizeof(arr)/sizeof(arr[0]);
+
+    printf("Maximum value in Knapsack = %.2f\n", fractionalKnapsack(W, arr, n));
+    return 0;
+}
+```
+
+### Output:
+```
+Maximum value in Knapsack = 240.00
+```
+
+---
+
+# ✨ Quick Summary
+
+| Feature | Fractional Knapsack |
+|:-------|:-------------------|
+| Take full item only? | ❌ (fraction allowed) |
+| Strategy type | Greedy |
+| Sorting needed? | ✅ (by value/weight) |
+| Time Complexity | O(n log n) (because of sorting) |
+| Space Complexity | O(1) extra (ignoring sorting space) |
+
+---
+
+# 🚀 Visual:
+
+Imagine you are filling a bottle with honey:
+
+- Pick the tastiest honey first (highest "sweetness per gram").
+- Keep filling.
+- If space runs out, pour as much as fits.
+  
+That's **Fractional Knapsack**!
+
+this is gpt generated as fuck lmao.
+
 
 
