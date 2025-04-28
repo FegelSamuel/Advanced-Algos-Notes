@@ -220,3 +220,21 @@ Else move to the larger of dp[i-1][j] or dp[i][j-1].
 **Important:**
 
 You collect characters backward (from the end to start), so at the end you must reverse the sequence.
+
+## Greedy Algorithms
+The idea of a greedy algorithm is to take the best/optimal choice at the given moment. This doesn't always work for everything, so you will need to figure out when is a good time to use it and when is a bad time to use it (for example, Djikstra's algorithm with negative values doesn't work).
+### 0-1 Knapsack
+Chitturi's explanation of this was funny as fuck lol. Imagine you're a robber and you can only carry so much gold in your knapsack. You can take gold bar or not take the gold bar. Each gold bar has its own specific value. 
+
+<br>
+
+We can define the problem as:
+```bash
+Given n items, each with:
+a weight w[i]
+and a value v[i],
+and a maximum weight capacity W for the knapsack,
+find the maximum total value you can carry without exceeding the weight W.
+```
+
+
