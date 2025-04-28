@@ -439,6 +439,12 @@ queue lol
 ### DFS
 gatekeeping this cuz i am dfs man
 
-
-
+### Prim's Algorithm MST
+Greedy BFS
+### Kruskal's MST
+Sort everything, iterate through the list of edges, pick the smallest first and throw out anything that creates a cycle. 
+### Djikstra's Algorithm
+greedy, only works on nonnegative, but more efficient
+### Bellman-Ford
+if negative cycle, throw `false`.
 
