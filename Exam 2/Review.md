@@ -420,5 +420,23 @@ That's **Fractional Knapsack**!
 
 this is gpt generated as fuck lmao.
 
+## Graphs
+### What is a Graph?
+A graph is a set of vertices connected by a set of edges. Graphs are broad and are basically the basic data structure. 
+### Adjacency Lists
+The length of an adjacency list is the number of vertices. An adjacency list is represented like this:
+A where A is an adjacency list
+A = { (u1, v1), (u2, v2) , (u1, v1), (u1, u2) }
+```mermaid
+graph TD;
+  u1 --> v1
+  u2 --> v2
+  u1 --> v1
+  u1 --> u2
+```
+### BFS
+
+
+
 
 
