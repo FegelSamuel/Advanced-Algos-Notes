@@ -273,6 +273,18 @@ int main() {
 max value here is 220.
 #### Table
 ![table](https://github.com/user-attachments/assets/12fe0edd-5203-4386-ac88-8ccc9f492616)
+
+```bash
+       w →
+i↓   0   1   2   3   4   5
+    -----------------------
+ 0 | 0   0   0   0   0   0
+ 1 | 0  60  60  60  60  60
+ 2 | 0  60 100 160 160 160
+ 3 | 0  60 100 160 180 220
+```
+
+
 ### Fractional Knapsack
 This one is way greedier
 # 📚 Problem Statement:
