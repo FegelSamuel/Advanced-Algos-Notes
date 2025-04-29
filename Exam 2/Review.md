@@ -420,7 +420,7 @@ Maximum value in Knapsack = 240.00
 
 ---
 
-# 🚀 Visual:
+## 🚀 Visual:
 
 Imagine you are filling a bottle with honey:
 
@@ -431,6 +431,13 @@ Imagine you are filling a bottle with honey:
 That's **Fractional Knapsack**!
 
 this is gpt generated as fuck lmao.
+
+### Activity Selection (we want to get as many jobs as possible)
+* Sort by something
+* Pick stuff based off of some criteria
+* idk i forgot
+
+
 
 ## Graphs
 ### What is a Graph?
