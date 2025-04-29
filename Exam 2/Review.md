@@ -473,3 +473,67 @@ if negative cycle, throw `false`.
 ### Strongly Connected Components
 What is a component? A component is a set of connected vertices in a graph. A strongly connected component is a component that when you take the transposition of a graph, you will still be able to reach every node in that component. For every node in the component, you can connect somehow to every other node in the component. Taking the transposition is just the way to prove it without doing 2^n bullshit. 
 
+
+### Edge Types
+In **graph theory**, especially when analyzing **depth-first search (DFS)** in directed graphs, we classify edges into **four types** based on how they connect nodes during DFS traversal. These are essential in understanding graph structures like **cycles**, **DAGs**, and **control flow**.
+
+---
+
+## ✅ The Four DFS Edge Types:
+
+### 1. **Tree Edge**
+- **Definition:** An edge that connects a node to a **newly discovered node**.
+- **Use:** These edges form the DFS tree (or forest).
+- **When:** If we visit `v` from `u` and `v` is unvisited.
+
+  **Example:**  
+  If DFS visits `u` and then discovers `v`, the edge `u → v` is a **tree edge**.
+
+---
+
+### 2. **Back Edge**
+- **Definition:** An edge that points **back to an ancestor** in the DFS tree.
+- **Indicates:** A **cycle** in the graph.
+- **When:** If `v` is an **ancestor** of `u` in the DFS stack.
+
+  **Example:**  
+  From node `u`, you find an edge to `v`, but `v` is still **active** (not yet finished) → **back edge**.
+
+---
+
+### 3. **Forward Edge**
+- **Definition:** An edge that connects a node to a **descendant** in the DFS tree, but **not a direct child**.
+- **When:** If `v` has already been visited **and finished**, and is a **descendant** of `u`.
+
+  **Example:**  
+  DFS visited `u`, went deep into its children, and is now processing an edge `u → v` where `v` is already done, and was visited by `u`’s subtree.
+
+---
+
+### 4. **Cross Edge**
+- **Definition:** An edge that connects nodes in **different DFS trees** or connects a node to another previously finished node that is **not its descendant**.
+- **When:** If `v` has been completely processed (`v.finished`), and it is **not a descendant** of `u`.
+
+  **Example:**  
+  From `u`, you have an edge to `v`, and `v` has already been visited **and finished**, but it’s **not related** to `u`'s DFS tree.
+
+---
+
+## 🔁 Summary Table
+
+| Edge Type    | Condition (DFS)                              | Indicates                   |
+|--------------|----------------------------------------------|-----------------------------|
+| Tree Edge    | `v` is unvisited                             | Expands DFS tree            |
+| Back Edge    | `v` is ancestor of `u` and still in progress | Cycle (not in DAGs)         |
+| Forward Edge | `v` is a descendant of `u`, already finished | Extra structure in DAG      |
+| Cross Edge   | `v` is finished, not ancestor or descendant  | Jump across branches / DAGs |
+
+---
+
+## 🧠 Tip for Implementation:
+
+When using timestamps in DFS:
+- `discovery[u]` = when you first visit `u`
+- `finish[u]` = when you finish exploring `u`
+
+You can classify edges by comparing `discovery` and `finish` times.
