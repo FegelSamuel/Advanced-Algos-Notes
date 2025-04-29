@@ -433,7 +433,7 @@ That's **Fractional Knapsack**!
 this is gpt generated as fuck lmao.
 
 ### Activity Selection (we want to get as many jobs as possible)
-* Sort by something
+* Sort by finish time
 * Pick stuff based off of some criteria
 * idk i forgot
 
