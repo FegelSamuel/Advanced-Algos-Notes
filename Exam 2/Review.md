@@ -460,3 +460,6 @@ greedy, only works on nonnegative, but more efficient
 ### Bellman-Ford
 if negative cycle, throw `false`.
 
+### Strongly Connected Components
+What is a component? A component is a set of connected vertices in a graph. A strongly connected component is a component that when you take the transposition of a graph, you will still be able to reach every node in that component. For every node in the component, you can connect somehow to every other node in the component. Taking the transposition is just the way to prove it without doing 2^n bullshit. 
+
