@@ -38,6 +38,9 @@ int fibonacci(int n, int memo[]) {
 This idea is memorization. Important concept! We cut down the chaff and just remember subsolutions to the problem. We are building on the subsolutions of previous fib calls. 
 #### New Recurrence Tree
 ![visualization](https://www.baeldung.com/wp-content/uploads/sites/4/2020/06/Fibonacci-memoization.svg)
+
+<br>
+
 Now our algorithm runs in O(n). 
 #### Dynamic Programming Implementation 2 (Bottom-Up)
 First, we have f(0) and f(1) by default. Then we calculate f(2) by adding f(1) and f(0). Then we calculate f(2) by adding f(1) and f(2). So on and so forth until f(n) is calculated with f(n - 1) and f(n - 2).
